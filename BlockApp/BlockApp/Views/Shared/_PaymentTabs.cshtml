@@ -1,0 +1,52 @@
+﻿@using BlockApp.Enum
+@using BlockApp.Helpers
+@model BlockApp.Models.ManageViewModels.TransactionViewModel
+
+@{
+    ViewData["Title"] = "Transaction - " + Model.Description;
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="text-center text-color-minor">Transaction</h1>
+            <p class="text-center text-color-minor">Description: @Model.Description</p>
+            <ul class="nav nav-tabs center-block">
+                <li class="active"><a class="text-color-minor" data-toggle="tab" href="#info">INFO</a></li>
+                <li><a class="text-color-minor" data-toggle="tab" href="#payment">PAYMENT</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="info" class="tab-pane fade in active">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-5">
+                            @Html.Partial("_Information", Model)                        
+                        </div>
+                        <div class="col-lg-2"></div>
+                        <div class="col-md-12 col-lg-5">
+                            @Html.Partial("_LogHistoryPartial", Model.Logs)                        
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="payment" class="tab-pane fade">
+                    @RenderBody()
+                </div>
+                
+                @if (!"Purchaser".Equals(ViewContext.RouteData.Values["controller"]))
+                {
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <button id="btnBack" class="btn btn-primary btn-outline btn-lg btn-back col-xs-6 col-sm-3 col-md-2">Back</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

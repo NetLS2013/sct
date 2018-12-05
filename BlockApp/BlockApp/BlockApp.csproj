@@ -1,0 +1,154 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>aspnet-BlockApp-4536C247-F3DB-4D27-BE5C-221638149FB3</UserSecretsId>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.0\payment.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\css\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\css\NewFolder\**" />
+    <None Remove="wwwroot\css\NewFolder\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PurchaserController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\Api\PaymentController.cs" />
+    <Compile Include="Data\ApplicationDbContext.cs" />
+    <Compile Include="Data\Entities\Log.cs" />
+    <Compile Include="Data\GenericRepository.cs" />
+    <Compile Include="Data\Migrations\00000000000000_CreateIdentitySchema.cs" />
+    <Compile Include="Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs" />
+    <Compile Include="Data\Migrations\20171228160858_ExtendUser.cs" />
+    <Compile Include="Data\Migrations\20171228160858_ExtendUser.Designer.cs" />
+    <Compile Include="Data\Migrations\20171229131121_MerchantAccount.cs" />
+    <Compile Include="Data\Migrations\20171229131121_MerchantAccount.Designer.cs" />
+    <Compile Include="Data\Migrations\20180109130749_Transactions.cs" />
+    <Compile Include="Data\Migrations\20180109130749_Transactions.Designer.cs" />
+    <Compile Include="Data\Migrations\20180109154745_MerchantAccount_Refactor.cs" />
+    <Compile Include="Data\Migrations\20180109154745_MerchantAccount_Refactor.Designer.cs" />
+    <Compile Include="Data\Migrations\20180110115653_MerchantAccount_XPubKey.cs" />
+    <Compile Include="Data\Migrations\20180110115653_MerchantAccount_XPubKey.Designer.cs" />
+    <Compile Include="Data\Migrations\20180111155054_TransactionHex.cs" />
+    <Compile Include="Data\Migrations\20180111155054_TransactionHex.Designer.cs" />
+    <Compile Include="Data\Migrations\20180111162458_AddXpub2Tx.cs" />
+    <Compile Include="Data\Migrations\20180111162458_AddXpub2Tx.Designer.cs" />
+    <Compile Include="Data\Migrations\20180112134504_DevelopLog.cs" />
+    <Compile Include="Data\Migrations\20180112134504_DevelopLog.Designer.cs" />
+    <Compile Include="Data\Migrations\20180112145738_AddTrxIds.cs" />
+    <Compile Include="Data\Migrations\20180112145738_AddTrxIds.Designer.cs" />
+    <Compile Include="Data\Migrations\20180112180839_Transactions_AmountPrecision.cs" />
+    <Compile Include="Data\Migrations\20180112180839_Transactions_AmountPrecision.Designer.cs" />
+    <Compile Include="Data\Migrations\20180116113634_Transaction_Email.cs" />
+    <Compile Include="Data\Migrations\20180116113634_Transaction_Email.Designer.cs" />
+    <Compile Include="Data\Migrations\20180117182749_Subscriptions.cs" />
+    <Compile Include="Data\Migrations\20180117182749_Subscriptions.Designer.cs" />
+    <Compile Include="Data\Migrations\20180118114615_Subscriptions_Paid.cs" />
+    <Compile Include="Data\Migrations\20180118114615_Subscriptions_Paid.Designer.cs" />
+    <Compile Include="Data\Migrations\20180125145638_Transaction_WalletType.cs" />
+    <Compile Include="Data\Migrations\20180125145638_Transaction_WalletType.Designer.cs" />
+    <Compile Include="Data\Migrations\20180125153547_MerchantAccount_EthereumAddress.cs" />
+    <Compile Include="Data\Migrations\20180125153547_MerchantAccount_EthereumAddress.Designer.cs" />
+    <Compile Include="Data\Migrations\20180129102251_EtherData.cs" />
+    <Compile Include="Data\Migrations\20180129102251_EtherData.Designer.cs" />
+    <Compile Include="Data\Migrations\20180129151601_ContractAddress.cs" />
+    <Compile Include="Data\Migrations\20180129151601_ContractAddress.Designer.cs" />
+    <Compile Include="Data\Migrations\20180213172808_CreateId.cs" />
+    <Compile Include="Data\Migrations\20180213172808_CreateId.Designer.cs" />
+    <Compile Include="Data\Migrations\20180313154828_MerchantAccount_RefirectUri.cs" />
+    <Compile Include="Data\Migrations\20180313154828_MerchantAccount_RefirectUri.Designer.cs" />
+    <Compile Include="Data\Migrations\ApplicationDbContextModelSnapshot.cs" />
+    <Compile Include="Data\Repositories\LogRepository.cs" />
+    <Compile Include="Data\Repositories\MerchantRepository.cs" />
+    <Compile Include="Data\Repositories\TransactionRepository.cs" />
+    <Compile Include="Data\Repositories\SubscriptionsRepository.cs" />
+    <Compile Include="Data\Entities\MerchantAccount.cs" />
+    <Compile Include="Data\Entities\Transaction.cs" />
+    <Compile Include="Data\Entities\ApplicationUser.cs" />
+    <Compile Include="Data\Entities\Subscriptions.cs" />
+    <Compile Include="Enum\StatusTransaction.cs" />
+    <Compile Include="Enum\WalletType.cs" />
+    <Compile Include="Extensions\EmailSenderExtensions.cs" />
+    <Compile Include="Extensions\UrlHelperExtensions.cs" />
+    <Compile Include="Helpers\Crypto.cs" />
+    <Compile Include="Helpers\CurrencyConverter.cs" />
+    <Compile Include="Helpers\MAD.cs" />
+    <Compile Include="Helpers\Validator.cs" />
+    <Compile Include="Interfaces\IEthereumService.cs" />
+    <Compile Include="Models\AccountViewModels\ForgotPasswordViewModel.cs" />
+    <Compile Include="Models\AccountViewModels\LoginViewModel.cs" />
+    <Compile Include="Models\AccountViewModels\RegisterViewModel.cs" />
+    <Compile Include="Models\AccountViewModels\ResetPasswordViewModel.cs" />
+    <Compile Include="Models\ContractModel.cs" />
+    <Compile Include="Models\ErrorViewModel.cs" />
+    <Compile Include="Models\LogViewModel.cs" />
+    <Compile Include="Models\ManageViewModels\SetTransactionId.cs" />
+    <Compile Include="Models\SubscribeModel.cs" />
+    <Compile Include="Models\ManageViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="Models\ManageViewModels\EnableAuthenticatorViewModel.cs" />
+    <Compile Include="Models\ManageViewModels\GenerateRecoveryCodesViewModel.cs" />
+    <Compile Include="Models\ManageViewModels\IndexViewModel.cs" />
+    <Compile Include="Models\ManageViewModels\SetPasswordViewModel.cs" />
+    <Compile Include="Models\ManageViewModels\MerchantViewModel.cs" />
+    <Compile Include="Models\ManageViewModels\TransactionViewModel.cs" />
+    <Compile Include="Models\ManageViewModels\PersonalViewModel.cs" />
+    <Compile Include="Models\CheckPaymentShop.cs" />
+    <Compile Include="Models\ShopInfoModel.cs" />
+    <Compile Include="Models\TransactionModel.cs" />
+    <Compile Include="Models\MultisigModel.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Services\BitcoinService.cs" />
+    <Compile Include="Services\EmailSender.cs" />
+    <Compile Include="Services\EthereumService.cs" />
+    <Compile Include="Services\RequestProvider.cs" />
+    <Compile Include="Interfaces\IGenericRepository.cs" />
+    <Compile Include="Interfaces\IEmailSender.cs" />
+    <Compile Include="Interfaces\IRequestProvider.cs" />
+    <Compile Include="Interfaces\IBitcoinService.cs" />
+    <Compile Include="Interfaces\ILogRepository.cs" />
+    <Compile Include="Interfaces\ISubscriptionsRepository.cs" />
+    <Compile Include="Interfaces\ITransactionRepository.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Views\Manage\ManageNavPages.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
+    <PackageReference Include="BuildBundlerMinifier" Version="2.6.362" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Antiforgery" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" PrivateAssets="All" />
+    <PackageReference Include="NBitcoin" Version="4.0.0.65" />
+    <PackageReference Include="Nethereum.HdWallet" Version="2.4.0" />
+    <PackageReference Include="Nethereum.JsonRpc.IpcClient" Version="2.4.0" />
+    <PackageReference Include="Nethereum.Web3" Version="2.4.0" />
+    <PackageReference Include="QBitNinja.Client" Version="1.0.3.46" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.3.0" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="7.2.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Solidity\bin\MultiSig.abi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Solidity\bin\MultiSig.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\fonts\" />
+  </ItemGroup>
+</Project>

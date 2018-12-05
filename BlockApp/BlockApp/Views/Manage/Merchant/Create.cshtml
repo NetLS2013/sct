@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Merchant account";
+    ViewData.AddActivePage(ManageNavPages.Merchant);
+}
+
+<h1 class="text-center text-color-minor">@ViewData["Title"]</h1>
+<div class="text-small text-center text-color-minor">Create merchant account</div>
+
+<div class="col-md-6 center-block float-none">
+    <section>
+        <form method="post" action="CreateMerchant">
+            <div class="form-group">
+                <div class="text-color-minor">A merchant ID being able to accept payments. Before your can use payment transactions, you need to create a merchant ID.</div>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" class="btn btn-block btn-warning btn-outline btn-lg center-block">Create</button>
+            </div>
+        </form>
+    </section>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

@@ -1,0 +1,51 @@
+﻿@using BlockApp.Enum
+@model BlockApp.Models.ManageViewModels.TransactionViewModel
+    
+<h2 class="text-color-minor">Step 1</h2>
+<p class="text-small text-color-minor">Confirm deposit transaction</p>
+<form>
+    <div class="form-group">
+        <label class="control-label-primary">Copy or import buyer's transaction code to your wallet</label>
+        <div class="input-group">
+            <input asp-for="BuyerConfirmedDepositTx" type="text" class="form-control control-input-primary" readonly="readonly" value="@Model.BuyerConfirmedDepositTx"/>
+            <span class="input-group-btn"><input value="&nbsp;" type="button" class="btn btn-download @(Model.Status < StatusTransaction.PartiallyDeposit? "disabled" : "")" @(Model.Status < StatusTransaction.PartiallyDeposit? "disabled=\"disabled\"" : "")></span>
+            <span class="input-group-btn"><input value="&nbsp;" type="button" class="btn btn-copy btn-left-radius @(Model.Status < StatusTransaction.PartiallyDeposit? " disabled" : "")" @(Model.Status < StatusTransaction.PartiallyDeposit? "disabled=\"disabled\"" : "") ></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label-primary">Paste in a received code from your wallet</label>
+        <input placeholder="Transaction hash id"  type="text" name="trxIdDepo" value="@Model.TrxDepositId"  class="form-control control-input-primary @(Model.Status < StatusTransaction.PartiallyDeposit || Model.Status > StatusTransaction.UnconfirmedWithdraw? "disabled" : "")" @(Model.Status < StatusTransaction.PartiallyDeposit || Model.Status > StatusTransaction.UnconfirmedWithdraw ? "readonly" : "")   />
+        <span id="lblIdDepo" class="text-danger"></span>
+        <span id="lblIdDepoSuccess" class="text-success"></span>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-6 col-sm-3 pull-right no-padding">
+            <input class="btn btn-block btn-warning btn-outline btn-lg @(Model.Status < StatusTransaction.PartiallyDeposit || Model.Status > StatusTransaction.UnconfirmedWithdraw? " disabled" : "")" @(Model.Status < StatusTransaction.PartiallyDeposit || Model.Status > StatusTransaction.UnconfirmedWithdraw? " disabled=\"disabled\"" : "") name="trxBtnDeposit"  type="button" value="Save">
+        </div>
+                
+    </div>
+    <input type="hidden" name="trxId" value="@Model.Id"/>
+</form>
+<br/>
+<h2 class="text-color-minor">Step 2</h2>
+<p class="text-small text-color-minor">Confirm withdraw transaction</p>
+<form>
+    <div class="form-group">
+        <label class="control-label-primary">Copy or import buyer's transaction code to your wallet</label>
+        <div class="input-group"> 
+            <input asp-for="BuyerConfirmedWithdrawTx" type="text" class="form-control control-input-primary" readonly="readonly" value="@Model.BuyerConfirmedWithdrawTx"/>
+            <span class="input-group-btn"><input input value="&nbsp;" type="button" class="btn btn-download @(Model.Status < StatusTransaction.PartiallyWithdraw? " disabled" : "")" @(Model.Status < StatusTransaction.PartiallyWithdraw? " disabled=\"disabled\"" : "") id="btnLoadConfWithd"></span>
+            <span class="input-group-btn"><input input value="&nbsp;" type="button" class="btn btn-copy btn-left-radius @(Model.Status < StatusTransaction.PartiallyWithdraw? " disabled" : "")" @(Model.Status < StatusTransaction.PartiallyWithdraw? " disabled=\"disabled\"" : "") id="btnCopyConfWithd" ></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label-primary">Paste in a received code from your wallet</label>
+        <input placeholder="Transaction hash id" type="text" name="trxIdWith"  value="@Model.TrxWithdrawId"  class="form-control control-input-primary @(Model.Status < StatusTransaction.PartiallyWithdraw || Model.Status == StatusTransaction.FullWithdraw? " disabled" : "")" @(Model.Status < StatusTransaction.PartiallyWithdraw || Model.Status == StatusTransaction.FullWithdraw ? "readonly" : "")/>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-6 col-sm-3 pull-right no-padding">
+            <input class="btn btn-block btn-warning btn-outline btn-lg @(Model.Status < StatusTransaction.PartiallyWithdraw || Model.Status == StatusTransaction.FullWithdraw? " disabled" : "")" @(Model.Status < StatusTransaction.PartiallyWithdraw || Model.Status == StatusTransaction.FullWithdraw? " disabled=\"disabled\"" : "") name="trxBtnWithdraw" type="button" value="Save">
+        </div>
+
+    </div>
+</form>

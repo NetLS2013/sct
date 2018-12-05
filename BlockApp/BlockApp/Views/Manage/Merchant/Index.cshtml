@@ -1,0 +1,138 @@
+﻿@using BlockApp.Enum
+@using BlockApp.Models.ManageViewModels
+@model MerchantViewModel
+@{
+    ViewData["Title"] = "Merchant account";
+    ViewData.AddActivePage(ManageNavPages.Merchant);
+}
+
+<div class="col-md-6 center-block float-none">
+    <h1 class="text-center text-color-minor">@ViewData["Title"]</h1>
+    <div class="text-small text-center text-color-minor">Change your account settings</div>
+    
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="text-color-minor">Subscription</h2>
+    
+            @if (!Model.Status)
+            {
+                <div class="form-group">
+                    <span class="text-color-minor">To activate your account you must generate address and pay price on it.</span>
+                </div>
+    
+                <div>
+                    <label asp-for="WalletType" class="control-label-primary"></label>
+                    
+                    <div class="row">
+                        <input id="wallet-type-value" value="@((int)Model.WalletType)" type="hidden"/>
+                        
+                        <div class="form-group col-md-7">
+                            <div class="dropdown">
+                                <button class="btn btn-block btn-dropdown dropdown-toggle" id="choose-wallet" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="@((int) Model.WalletType)">
+                                    @(Html.Raw(Model.WalletType != 0 ? Model.WalletType.ToString() : "Choose wallet")) <span class="caret"></span>
+                                </button>
+
+                                <ul class="dropdown-menu control-dropdown-primary" id="dropdown-wallet" aria-labelledby="choose-wallet">
+                                    <li @(Model.WalletType == WalletType.Electrum? " class=active" : "")><a href="#" data-value="1">Electrum</a></li>
+                                    <li @(Model.WalletType == WalletType.Ethereum? " class=active" : "")><a href="#" data-value="2">Ethereum</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <button class="btn btn-block btn-primary btn-outline" id="btnGenerateSubscribeAddress" @(!string.IsNullOrWhiteSpace(Model.Address) ? "disabled" : "")>Generate address</button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label-primary"></label>
+                    <input asp-for="Price" class="form-control control-input-primary" disabled/>
+                </div>
+    
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label-primary"></label>
+                    <input asp-for="Address" class="form-control control-input-primary" disabled/>
+                </div>
+    
+                <div class="form-group">
+                    <label asp-for="Status" class="control-label-primary"></label>
+                    <b id="subscibe-status" class="text-danger">Expired</b>
+                </div>
+    
+                <button id="btn-check-status" class="btn col-xs-12 col-sm-4 pull-right btn-warning btn-outline btn-lg">Check status</button>
+            }
+            else
+            {
+                <div class="form-group">
+                    <label asp-for="Status" class="control-label-primary"></label>
+                    <b class="text-success">Active</b>
+                </div>
+    
+                <div class="form-group">
+                    <label asp-for="Expired" class="control-label-primary"></label>
+                    <span class="text-color-minor">@Model.Expired</span>
+                </div>
+            }
+        </div>
+
+        <div class="col-xs-12">
+            <form>
+                <section class="section-group">
+                    <h2 class="text-color-minor">Merchant settings</h2>
+
+                    <div class="form-group">
+                        <label asp-for="MerchantId" class="control-label-primary"></label>
+                        <input asp-for="MerchantId" class="form-control control-input-primary" disabled/>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="MerchantSecret" class="control-label-primary"></label>
+
+                        <div class="input-group">
+                            <input asp-for="MerchantSecret" class="form-control control-input-primary" readonly/>
+
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-primary btn-outline" id="btnGenerateMerchantSecret">
+                                    <span class="glyphicon glyphicon-refresh"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label asp-for="RedirectUri" class="control-label-primary"></label>
+                        <input asp-for="RedirectUri" class="form-control control-input-primary"/>
+                        <span asp-validation-for="RedirectUri" class="text-danger field-validation"></span>
+                    </div>
+                </section>
+
+                <section class="section-group">
+                    <h2 class="text-color-minor">Bitcoin wallet</h2>
+
+                    <div class="form-group">
+                        <label asp-for="XPubKey" class="control-label-primary"></label>
+                        <input asp-for="XPubKey" class="form-control control-input-primary"/>
+                        <span asp-validation-for="XPubKey" class="text-danger field-validation"></span>
+                    </div>
+                </section>
+
+                <section class="section-group">
+                    <h2 class="text-color-minor">Ethereum wallet</h2>
+
+                    <div class="form-group">
+                        <label asp-for="EthereumAddress" class="control-label-primary"></label>
+                        <input asp-for="EthereumAddress" class="form-control control-input-primary"/>
+                        <span asp-validation-for="EthereumAddress" class="text-danger field-validation"></span>
+                    </div>
+                </section>
+
+                <button id="btn-save-merchant" type="button" class="btn col-xs-12 col-sm-4 pull-right btn-warning btn-outline btn-lg">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

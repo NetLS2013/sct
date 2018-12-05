@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper-account">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-offset-0 col-sm-12 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 alt-grid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

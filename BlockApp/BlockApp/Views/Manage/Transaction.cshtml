@@ -1,0 +1,23 @@
+@using BlockApp.Enum
+@using BlockApp.Helpers
+@model BlockApp.Models.ManageViewModels.TransactionViewModel
+
+@{
+    Layout = "_PaymentTabs";
+}
+
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-md-push-3">
+        @if (Model.WalletType == WalletType.Electrum)
+        {
+            @Html.Partial("_ElectrumPayment", Model)
+        }
+        @if (Model.WalletType == WalletType.Ethereum)
+        {
+            @Html.Partial("_EthereumPayment", Model)
+        }
+    </div>
+    
+</div>

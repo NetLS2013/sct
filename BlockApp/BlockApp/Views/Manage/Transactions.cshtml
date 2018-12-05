@@ -1,0 +1,19 @@
+﻿@model X.PagedList.IPagedList<BlockApp.Models.ManageViewModels.TransactionViewModel>
+
+@{
+    ViewData["Title"] = "Transactions";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12"> 
+            <h1 class="text-center text-color-minor">Transactions</h1>
+            <p class="text-color-minor text-center">Manage your transactions</p>
+            <div id="trxTable">
+                @Html.Partial("_TransactionTable", Model)
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

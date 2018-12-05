@@ -1,0 +1,222 @@
+﻿@using BlockApp.Data.Entities
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    var controllerName = ViewContext.RouteData.Values["controller"].ToString();
+    var actionName = ViewContext.RouteData.Values["action"].ToString();
+    
+    var user = await UserManager.GetUserAsync(User);
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>@(string.IsNullOrWhiteSpace((string)ViewData["Title"]) ? "Safe crypto trades" : ViewData["Title"] + " - Safe crypto trades")</title>
+    <environment names="Development">
+        <link rel="stylesheet" href="~/bundle/vendor.css" />
+        <link rel="stylesheet" href="~/bundle/blockapp.css"/>
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/bundle/vendor.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/bundle/blockapp.min.css" asp-append-version="true" />
+    </environment>
+</head>
+
+<body>
+    <div class="@(controllerName.Equals("Account") ? "container-account" : "")">
+        @if ("Purchaser".Equals(controllerName))
+        {
+            <header class="navbar navbar-under navbar-inner">
+                <nav class="container">
+                    <div class="row">
+                        <div class="navbar-content col-xs-2 center-block float-none">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a class="logo-brand" asp-controller="Home" asp-action="Index"><img src="/images/Logo.svg" alt="Brand" class="image-brand"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        }
+        else if (SignInManager.IsSignedIn(User))
+        {
+            <header class="navbar@(controllerName.Equals("Home") ? "" : " navbar-inner") @(!controllerName.Equals("Account") ? "navbar-under" : "")">
+                <nav class="container">
+                    <div class="row menu-padding">
+                        <img src="/images/Icons/menu.svg" class="hidden-sm hidden-md hidden-lg menu-image"/>
+        
+                        <div class="col-xs-6 col-sm-3 col-md-2 col-xs-push-3 col-sm-push-0 col-md-push-0">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a class="center-block logo-brand" asp-controller="Home" asp-action="Index"><img src="/images/Logo.svg" alt="Brand" class="image-brand"/></a>
+                                </li>
+                            </ul>
+                        </div>
+        
+                        <div class="col-md-5 hidden-xs">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a asp-controller="Manage" asp-action="Index" class="link-minor">Profile</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Manage" asp-action="Merchant" class="link-minor">Merchant</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Manage" asp-action="Transactions" class="link-minor">Transactions</a>
+                                </li>
+                            </ul>
+                        </div>
+        
+                        <div class="col-xs-12 col-sm-3 col-md-5 pull-right hidden-xs">
+                            <div class="row">
+                                <div class="col-xs-6 hidden-sm">
+                                    <ul class="nav navbar-nav menu-link">
+                                        <li>
+                                            <a asp-controller="Manage" asp-action="Index" class="link-minor text-box"><span>Hello, @string.Concat(user.FirstName.FirstOrDefault(), ". ", user.LastName)!</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-6 col-sm-12 col-md-6">
+                                    <form asp-controller="Account" asp-action="Logout" method="post">
+                                        <button type="submit" class="btn @("Home".Equals(controllerName) ? "btn-warning" : "btn-primary") btn-outline btn-lg btn-block pull-right">Logout</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        }
+        else
+        {
+            <header class="navbar@("Home".Equals(controllerName) ? " navbar-under" : "") @(!actionName.Equals("Error") ? "" : "navbar-inner")">
+                <nav class="container">
+                    <div class="row menu-padding">
+                        <div class="col-xs-12 col-sm-3 col-md-2">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a class="center-block logo-brand" asp-controller="Home" asp-action="Index"><img src="/images/Logo.svg" alt="Brand" class="image-brand logo-anon"/></a>
+                                </li>
+                            </ul>
+                        </div>
+        
+                        @if ("Account".Equals(controllerName))
+                        {
+                            if ("Login".Equals(actionName))
+                            {
+                                <div class="col-xs-6 col-sm-5 col-md-3 pull-right hidden-xs">
+                                    <ul class="nav navbar-nav menu-link">
+                                        <li>
+                                            <a class="link-minor" asp-controller="Account" asp-action="Register">Registration</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                            else
+                            {
+        
+                                <div class="col-xs-6 col-sm-5 col-md-3 pull-right hidden-xs">
+                                    <ul class="nav navbar-nav menu-link">
+                                        <li>
+                                            <a class="link-minor" asp-controller="Account" asp-action="Login">Login</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="col-sm-4 col-md-3 hidden-sm hidden-xs">
+                                <a class="btn btn-success btn-outline btn-lg btn-block" asp-controller="Account" asp-action="Register">Free monthly trial</a>
+                            </div>
+                            <div class="col-sm-3 col-md-2 hidden-sm hidden-xs">
+                                <a class="btn btn-warning btn-outline btn-lg btn-block" asp-controller="Account" asp-action="Register">Subscription</a>
+                            </div>
+                            <div class="col-xs-6 col-sm-3 col-md-2 pull-right">
+                                <a class="btn btn-warning btn-outline btn-lg btn-block" asp-controller="Account" asp-action="Login">Login</a>
+                            </div>
+                            <div class="col-xs-6 col-sm-5 col-md-3 pull-right">
+                                <ul class="nav navbar-nav menu-link">
+                                    <li>
+                                        <a class="link-minor" asp-controller="Account" asp-action="Register">Registration</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                </nav>
+            </header>
+        }
+        
+        @RenderBody()
+        
+        <div class="sidenav">
+            <div class="sidenav-head">
+                <div class="sidenav-header">
+                    <img src="/images/Icons/ic_close_black_24px.svg" class="button-close">
+                    <p class="text-color-minor text-box"><span>Hello,</span><span>@string.Concat(user?.FirstName?.First(), ". ", user?.LastName)!</span></p>
+                </div>
+        
+                <a asp-controller="Manage" asp-action="Index" class="link-extra">Profile</a>
+                <a asp-controller="Manage" asp-action="Merchant" class="link-extra">Merchant</a>
+                <a asp-controller="Manage" asp-action="Transactions" class="link-extra">Transactions</a>
+                <hr/>
+                <form asp-controller="Account" asp-action="Logout" method="post">
+                    <a><button class="link-extra" type="submit">Logout</button></a>
+                </form>
+            </div>
+            <div class="sidenav-body"></div>
+        </div>
+        
+        <div id="alertBox" class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-push-1 col-md-push-2 col-lg-push-3">
+                    <div id="alertColor">
+                        <div id="alertHead" class="alert alert-dismissible text-center" role="alert">
+                            <button id="alertClose" type="button" class="close"><span aria-hidden="true">×</span></button>
+                            <span id="alertText"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="container">
+                <div class="row footer-padding">
+                    <div class="col-xs-12 col-sm-8 col-md-10">
+                        <div class="row footer-padding">
+                            <div class="col-xs-6 col-sm-3 col-md-2">
+                                <a class="link-extra" asp-controller="Home" asp-action="Index" asp-fragment="Contact">Contacts</a>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3">
+                                <a class="link-extra" asp-controller="Account" asp-action="videoguide">Video Guide</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2 pull-right">
+                        <p class="text-small text-color-extra">&copy; NetLS @DateTime.Now.Year</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <environment names="Development">
+        <script type="text/javascript" src="~/bundle/vendor.js"></script>
+        <script type="text/javascript" src="~/bundle/blockapp.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/bundle/vendor.min.js" asp-append-version="true"></script>
+        <script src="~/bundle/blockapp.min.js" asp-append-version="true"></script>
+    </environment>
+    
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

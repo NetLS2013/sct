@@ -1,0 +1,173 @@
+﻿[
+  // ======== Start non-minificated bundles ========
+
+  // ================ CSS ================
+  {
+    "outputFileName": "wwwroot/bundle/site.css",
+    "inputFiles": [
+      "node_modules/font-awesome/css/font-awesome.css",
+      "wwwroot/lib/bootstrap/css/bootstrap.css"
+    ],
+    "minify": {
+      "enabled": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/bundle/blockapp.css",
+    "inputFiles": [
+      "wwwroot/css/site.css",
+      "wwwroot/css/landing.css",
+      "wwwroot/css/transaction.css"
+    ],
+    "minify": {
+      "enabled": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/bundle/vendor.css",
+    "inputFiles": [
+      "node_modules/font-awesome/css/font-awesome.css",
+      "wwwroot/lib/bootstrap/css/bootstrap.css",
+      "node_modules/datatables.net-bs/css/dataTables.bootstrap.css"
+    ],
+    "minify": {
+      "enabled": false
+    }
+  },
+  // ================ CSS ================
+
+  // ================ JS ================
+  {
+    "outputFileName": "wwwroot/bundle/vendor.js",
+    "inputFiles": [
+      "node_modules/jquery/dist/jquery.js",
+      "wwwroot/lib/bootstrap/js/bootstrap.js",
+      "node_modules/jquery-validation/dist/jquery.validate.js",
+      "node_modules/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "node_modules/datatables.net/js/jquery.dataTables.js",
+      "node_modules/datatables.net-bs/js/dataTables.bootstrap.js"
+
+    ],
+
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+
+  {
+    "outputFileName": "wwwroot/bundle/blockapp.js",
+    "inputFiles": [
+      "wwwroot/js/site.js",
+      "wwwroot/js/manage.js",
+      "wwwroot/js/purchaser.js"
+    ],
+
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    }
+  },
+  // ================ JS ================
+
+  // ======== End non-minificated bundles ========
+
+
+
+  // ======== Start minificated bundles ========
+
+  // ================ CSS ================
+  {
+    "outputFileName": "wwwroot/bundle/site.min.css",
+    "inputFiles": [
+      "node_modules/font-awesome/css/font-awesome.min.css",
+      "wwwroot/lib/bootstrap/css/bootstrap.min.css"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/bundle/blockapp.min.css",
+    "inputFiles": [
+      "wwwroot/css/site.css",
+      "wwwroot/css/landing.css",
+      "wwwroot/css/transaction.css"
+    ]
+  },
+
+  {
+    "outputFileName": "wwwroot/bundle/vendor.min.css",
+    "inputFiles": [
+      "node_modules/font-awesome/css/font-awesome.min.css",
+      "wwwroot/lib/bootstrap/css/bootstrap.min.css",
+      "node_modules/datatables.net-bs/css/dataTables.bootstrap.css"
+    ]
+  },
+  // ================ CSS ================
+
+  // ================ JS ================
+  {
+    "outputFileName": "wwwroot/bundle/vendor.min.js",
+    "inputFiles": [
+      "node_modules/jquery/dist/jquery.min.js",
+      "wwwroot/lib/bootstrap/js/bootstrap.min.js",
+      "node_modules/jquery-validation/dist/jquery.validate.min.js",
+      "node_modules/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "node_modules/datatables.net-bs/js/dataTables.bootstrap.js"
+    ],
+
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
+  {
+    "outputFileName": "wwwroot/bundle/blockapp.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js",
+      "wwwroot/js/manage.js",
+      "wwwroot/js/purchaser.js"
+    ],
+
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
+  {
+    "outputFileName": "wwwroot/js/purchaser.min.js",
+    "inputFiles": [
+      "wwwroot/js/purchaser.js"
+    ],
+
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
+
+  {
+    "outputFileName": "wwwroot/js/manage.min.js",
+    "inputFiles": [
+      "wwwroot/js/manage.js"
+    ],
+
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+
+    "sourceMap": false
+  }
+  // ================ JS ================
+
+  // ======== End minificated bundles ========
+
+]

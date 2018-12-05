@@ -1,0 +1,29 @@
+﻿@model IEnumerable<LogViewModel>
+<p class="text-color-minor text-center">Log history</p>
+<div class="table-responsive">
+    <table class="table log-table text-color-minor">
+        <thead>
+        <tr class="text-color-minor-light">
+            <th class="col-md-7">
+                @Html.DisplayName("Description")
+            </th>
+            <th class="text-right col-md-5">
+                @Html.DisplayName("Date")
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td class="text-right">
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

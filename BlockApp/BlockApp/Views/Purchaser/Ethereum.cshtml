@@ -1,0 +1,116 @@
+﻿@using BlockApp.Enum
+@using BlockApp.Models.ManageViewModels
+
+@model BlockApp.Models.ManageViewModels.TransactionViewModel
+
+@{
+    Layout = "_PaymentTabs";
+}
+
+<div class="col-md-6 center-block float-none">
+    <input id="hash" value="@Model.Hash" type="hidden"/>
+    @Html.Partial("_StatusMessage", Model.StatusMessage)
+    
+    <div class="row">
+        <div class="col-xs-12">
+            <form>
+                <div class="form-group">
+                    <h2 class="text-color-minor">Step 1</h2>
+                    <span class="text-small text-color-minor">Please enter you email and address</span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label-primary"></label>
+                    <input asp-for="Email" class="form-control control-input-primary">
+                    <span asp-validation-for="Email" class="text-danger field-validation"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="BuyerAddress" class="control-label-primary"></label>
+                    <input asp-for="BuyerAddress" class="form-control control-input-primary"/>
+                    <span asp-validation-for="BuyerAddress" class="text-danger field-validation"></span>
+                </div>
+
+                <div class="form-group form-btn-loader">
+                    <input type="button" class="btn btn-warning btn-outline btn-lg col-xs-6 col-sm-4 pull-right" id="btnSaveDetail" @(!string.IsNullOrWhiteSpace(Model.BuyerAddress) ? "disabled" : "") value="Save">
+                    <div class="loader"></div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="col-xs-12">
+            <div class="form-group">
+                <h2 class="text-color-minor">Step 2</h2>
+                <span class="text-small text-color-minor">Send a fee to create a multi wallet</span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="FeeAddress" class="control-label-primary"></label>
+                
+                <div class="input-group">
+                    <input type="text" asp-for="FeeAddress" class="form-control control-input-primary" readonly="readonly"/>
+                    <span class="input-group-btn"><input value="&nbsp;" type="button" class="btn btn-copy btn-left-radius @(string.IsNullOrWhiteSpace(Model.FeeAddress)? "disabled" : ""))" @(string.IsNullOrWhiteSpace(Model.FeeAddress) ? "disabled=\"disabled\"" : "")></span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="FeeValue" class="control-label-primary"></label>
+                
+                <div class="input-group">
+                    <input type="text" asp-for="FeeValue" class="form-control control-input-primary" readonly="readonly"/>
+                    <span class="input-group-btn"><input value="&nbsp;" type="button" class="btn btn-copy btn-left-radius @(string.IsNullOrWhiteSpace(Model.FeeValue)? "disabled" : ""))" @(string.IsNullOrWhiteSpace(Model.FeeValue) ? "disabled=\"disabled\"" : "")></span>
+                </div>
+            </div>
+            
+            <div class="form-btn-loader">
+                <label asp-for="Balance" class="control-label-primary"></label>
+                
+                <div class="row">
+                    <div class="form-group col-md-8">
+                        <input asp-for="Balance" class="form-control control-input-primary" disabled/>
+                    </div>
+    
+                    <div class="form-group col-md-4">
+                        <button class="btn col-xs-12 btn-warning btn-outline" id="btnCheckBalance">Check balance</button>
+                    </div>
+                    
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xs-12">
+            <div class="form-group">
+                <h2 class="text-color-minor">Step 3</h2>
+                <span class="text-small text-color-minor">Deploy contract</span>
+            </div>
+            
+            <div class="form-group form-btn-loader">
+                <button class="btn btn-block btn-warning btn-outline btn-lg pull-right" id="btnDeploy" @(Model.Status == StatusTransaction.Deployed || Convert.ToDouble(Model.Balance) <= 0 ? "disabled" : "")>Deploy contract</button>
+                <div class="loader"></div>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="ContractAddress" class="control-label-primary"></label>
+                
+                <div class="input-group">
+                    <input type="text" asp-for="ContractAddress" class="form-control control-input-primary" readonly="readonly"/>
+                    <span class="input-group-btn"><input value="&nbsp;" type="button" class="btn btn-copy btn-left-radius @(string.IsNullOrWhiteSpace(Model.ContractAddress) ? "disabled" : ""))" @(string.IsNullOrWhiteSpace(Model.ContractAddress) ? "disabled=\"disabled\"" : "")></span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="ABI" class="control-label-primary"></label>
+                
+                <div class="input-group">
+                    <input type="text" asp-for="ABI" class="form-control control-input-primary" readonly="readonly"/>
+                    <span class="input-group-btn"><input value="&nbsp;" type="button" class="btn btn-copy btn-left-radius @(string.IsNullOrWhiteSpace(Model.ABI)? "disabled" : ""))" @(string.IsNullOrWhiteSpace(Model.ABI) ? "disabled=\"disabled\"" : "")></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

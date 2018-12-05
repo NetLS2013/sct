@@ -1,0 +1,106 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/Users/keiqsa/Projects/blockapp/BlockApp/BlockApp/BlockApp.csproj",
+    "projectName": "BlockApp",
+    "projectPath": "/Users/keiqsa/Projects/blockapp/BlockApp/BlockApp/BlockApp.csproj",
+    "outputPath": "/Users/keiqsa/Projects/blockapp/BlockApp/BlockApp/obj/",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp2.0"
+    ],
+    "frameworks": {
+      "netcoreapp2.0": {
+        "projectReferences": {}
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.0": {
+      "dependencies": {
+        "AutoMapper": {
+          "target": "Package",
+          "version": "[6.2.2, )"
+        },
+        "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+          "target": "Package",
+          "version": "[3.2.0, )"
+        },
+        "BuildBundlerMinifier": {
+          "target": "Package",
+          "version": "[2.6.362, )"
+        },
+        "Microsoft.AspNetCore.All": {
+          "target": "Package",
+          "version": "[2.0.6, )"
+        },
+        "Microsoft.AspNetCore.Antiforgery": {
+          "target": "Package",
+          "version": "[2.0.2, )"
+        },
+        "Microsoft.EntityFrameworkCore.Design": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.0.2, )"
+        },
+        "Microsoft.EntityFrameworkCore.Tools": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.0.2, )"
+        },
+        "Microsoft.NETCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.0.0, )",
+          "autoReferenced": true
+        },
+        "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.0.3, )"
+        },
+        "NBitcoin": {
+          "target": "Package",
+          "version": "[4.0.0.65, )"
+        },
+        "Nethereum.HdWallet": {
+          "target": "Package",
+          "version": "[2.4.0, )"
+        },
+        "Nethereum.JsonRpc.IpcClient": {
+          "target": "Package",
+          "version": "[2.4.0, )"
+        },
+        "Nethereum.Web3": {
+          "target": "Package",
+          "version": "[2.4.0, )"
+        },
+        "QBitNinja.Client": {
+          "target": "Package",
+          "version": "[1.0.3.46, )"
+        },
+        "Swashbuckle.AspNetCore": {
+          "target": "Package",
+          "version": "[2.3.0, )"
+        },
+        "X.PagedList.Mvc.Core": {
+          "target": "Package",
+          "version": "[7.2.4, )"
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

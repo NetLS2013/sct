@@ -1,0 +1,99 @@
+﻿@using BlockApp.Enum
+@using BlockApp.Models.ManageViewModels
+
+@model BlockApp.Models.ManageViewModels.TransactionViewModel
+
+@{
+    Layout = "_PaymentTabs";
+}
+
+<div class="col-md-6 center-block float-none">
+    <input id="hash" value="@Model.Hash" type="hidden"/>
+    @Html.Partial("_StatusMessage", Model.StatusMessage)
+    
+    <div class="row">
+        <div class="col-xs-12">
+            <form>
+                <div class="form-group">
+                    <h2 class="text-color-minor">Step 1</h2>
+                    <span class="text-small text-color-minor">Generate multisig transactions</span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label-primary"></label>
+                    <input asp-for="Email" class="form-control control-input-primary">
+                    <span asp-validation-for="Email" class="text-danger field-validation"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="XPubKey" class="control-label-primary"></label>
+                    <input asp-for="XPubKey" class="form-control control-input-primary">
+                    <span asp-validation-for="XPubKey" class="text-danger field-validation"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="UnconfirmedDepositTx" class="control-label-primary"></label>
+
+                    <div class="input-group">
+                        <input type="text" asp-for="UnconfirmedDepositTx" class="form-control control-input-primary" readonly="readonly"/>
+                        <span class="input-group-btn"><input value="&nbsp;" type="button" class="btn btn-download @(Model.Status < StatusTransaction.UnconfirmedDeposit ? "disabled" : "")" @(Model.Status < StatusTransaction.UnconfirmedDeposit ? "disabled=\"disabled\"" : "")></span>
+                        <span class="input-group-btn"><input value="&nbsp;" type="button" class="btn btn-copy btn-left-radius @(Model.Status < StatusTransaction.UnconfirmedDeposit ? "disabled" : "")" @(Model.Status < StatusTransaction.UnconfirmedDeposit ? "disabled=\"disabled\"" : "")></span>
+                    </div>
+                </div>
+                <div class="form-group form-btn-loader">
+                    <input type="button" value="Generate script" class="btn btn-warning btn-outline btn-lg col-xs-12 col-sm-6 pull-right" id="btnGenerateUnconfirmedScript" @(!string.IsNullOrWhiteSpace(Model.UnconfirmedDepositTx) ? "disabled" : "")>
+                    <div class="loader"></div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-xs-12">
+            <div class="form-group">
+                <h2 class="text-color-minor">Step 2</h2>
+                <span class="text-small text-color-minor">Send partially confirmed script to the seller</span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BuyerConfirmedDepositTx" class="control-label-primary"></label>
+                <input asp-for="BuyerConfirmedDepositTx" class="form-control control-input-primary">
+            </div>
+
+            <div class="form-group form-btn-loader">
+                <button class="btn btn-warning btn-outline btn-lg col-xs-6 col-sm-4 pull-right" id="btnSendPartiallyDepositScript" @(!string.IsNullOrWhiteSpace(Model.BuyerConfirmedDepositTx) ? "disabled" : "")>Send</button>
+                <div class="loader"></div>
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <div class="form-group">
+                <h2 class="text-color-minor">Step 3</h2>
+                <span class="text-small text-color-minor">Withdraw multisig transactions</span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="UnconfirmedWithdrawTx" class="control-label-primary"></label>
+                
+                <div class="input-group">
+                    <input type="text" asp-for="UnconfirmedWithdrawTx" class="form-control control-input-primary" readonly="readonly"/>
+                    
+                    <span class="input-group-btn"><input value="&nbsp;" type="button" class="btn btn-download @(Model.Status < StatusTransaction.UnconfirmedWithdraw? "disabled" : "")" @(Model.Status < StatusTransaction.UnconfirmedWithdraw ? "disabled=\"disabled\"" : "")></span>
+                    <span class="input-group-btn"><input value="&nbsp;" type="button" class="btn btn-copy btn-left-radius @(Model.Status < StatusTransaction.UnconfirmedWithdraw? "disabled" : "")" @(Model.Status < StatusTransaction.UnconfirmedWithdraw ? "disabled=\"disabled\"" : "")></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BuyerConfirmedWithdrawTx" class="control-label-primary"></label>
+                <input asp-for="BuyerConfirmedWithdrawTx" class="form-control control-input-primary">
+            </div>
+
+            <div class="form-group form-btn-loader">
+                <button class="btn btn-warning btn-outline btn-lg col-xs-6 col-sm-4 pull-right" id="btnSendPartiallyWithdrawScript" @(!string.IsNullOrWhiteSpace(Model.BuyerConfirmedWithdrawTx) ? "disabled" : "")>Send</button>
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

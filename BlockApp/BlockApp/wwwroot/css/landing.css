@@ -1,0 +1,123 @@
+﻿.content-image {
+    background-image: url("../images/Photo1.jpg");
+    width: 100%;
+    padding-top: 25rem;
+    padding-bottom: 10rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.work-image {
+    background-image: url("../images/Photo2.jpg");
+    width: 100%;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+    .work-image > div > h1 {
+        padding-bottom: 4rem;
+    }
+
+
+.contact-image {
+    background-image: url("../images/Photo3.jpg");
+    width: 100%;
+    padding-top: 10rem;
+    padding-bottom: 29rem;
+    -ms-background-position: center;
+    background-position: center;
+    -ms-background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    -ms-background-size: cover;
+    background-size: cover;
+}
+
+    .contact-image > div > h1 {
+        text-align: center;
+        padding-bottom: 3rem;
+    }
+
+
+.icon-container {
+    background-color: rgb(239, 242, 243);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.text-cantainer > img,
+.text-cantainer > a {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.text-cantainer {
+    background-color: rgb(69, 74, 117);
+    border-radius: 10px;
+}
+
+.card .card-header {
+    background-color: #eff2f3;
+    filter: alpha(opacity=75);
+    -moz-opacity: 0.75;
+    opacity: 0.75;
+    padding: 1.6rem;
+    -webkit-border-top-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -ms-border-top-left-radius: 10px;
+    border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    -ms-border-top-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card .card-block {
+    background-color: #454a75;
+    filter: alpha(opacity=75);
+    -moz-opacity: 0.75;
+    opacity: 0.75;
+    padding: 2rem;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -ms-border-bottom-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    -ms-border-bottom-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+@media screen and (min-width: 1280px) {
+
+    .contact-image > div > h1 {
+        text-align: left !important;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 599px) {
+
+    .content-image {
+        padding-top: 35rem !important;
+    }
+
+    .card {
+        margin-left: -12px;
+        margin-right: -12px;
+
+    }
+    .card-header,
+    .card-block{
+        border-radius: 0 !important;
+    }
+
+    .text-cantainer > img,
+    .text-cantainer > a {
+        padding: 1rem !important;
+        font-size: 2rem;
+        height: 8rem;
+    }
+}

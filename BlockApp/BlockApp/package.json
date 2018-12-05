@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "name": "blockapp",
+  "private": true,
+  "devDependencies": {
+    "jquery": "3.3.1",
+    "jquery-validation": "1.17.0",
+    "jquery-validation-unobtrusive": "3.2.6",
+    "font-awesome": "4.7.0",
+    "datatables.net-bs": "1.10.16"
+  }
+}

@@ -1,0 +1,24 @@
+﻿@using BlockApp.Enum
+@using BlockApp.Helpers
+
+@model BlockApp.Models.ManageViewModels.TransactionViewModel
+
+@{
+    var payDeposit = MAD.Deposit(Model.Amount);
+    var payWithdraw = MAD.Withdraw(Model.Amount);
+}
+<p class="text-color-minor text-center">Information</p>
+<dl class="dl-horizontal text-color-minor">
+    <dt>@Html.DisplayNameFor(model => model.Status):</dt>
+    <dd>@Html.DisplayFor(model => model.Status)</dd>
+    <dt>@Html.DisplayNameFor(model => model.Amount):</dt>
+    <dd>@Html.DisplayFor(model => model.Amount) @(Model.WalletType == WalletType.Electrum ? "BTC" : "ETH")</dd>
+    <dt>Seller's deposit:</dt>
+    <dd>@payDeposit.Item1 @(Model.WalletType == WalletType.Electrum ? "BTC" : "ETH")</dd>
+    <dt>Buyer's deposit:</dt>
+    <dd>@payDeposit.Item2 @(Model.WalletType == WalletType.Electrum ? "BTC" : "ETH")</dd>
+    <dt>Seller's withdraw:</dt>
+    <dd>@payWithdraw.Item1 @(Model.WalletType == WalletType.Electrum ? "BTC" : "ETH")</dd>
+    <dt>Buyer's withdraw:</dt>
+    <dd>@payWithdraw.Item2 @(Model.WalletType == WalletType.Electrum ? "BTC" : "ETH")</dd>             
+</dl>

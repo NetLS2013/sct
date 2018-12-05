@@ -1,0 +1,97 @@
+﻿@using BlockApp.Models.ManageViewModels
+@model BlockApp.Models.ManageViewModels.IndexViewModel
+@{                        
+    ViewData["Title"] = "Profile";
+    ViewData.AddActivePage(ManageNavPages.Index);
+}
+
+<div class="col-md-6 center-block float-none">
+    <h1 class="text-center text-color-minor">@ViewData["Title"]</h1>
+    <div class="text-small text-center text-color-minor">Change your account settings</div>
+    
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="text-color-minor">Personal info</h2>
+    
+            <form method="post">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="FirstName" class="control-label-primary"></label>
+                        <input asp-for="FirstName" class="form-control control-input-primary"/>
+                        <span asp-validation-for="FirstName" class="text-danger field-validation"></span>
+                    </div>
+                    
+                    <div class="form-group col-md-6">
+                        <label asp-for="LastName" class="control-label-primary"></label>
+                        <input asp-for="LastName" class="form-control control-input-primary"/>
+                        <span asp-validation-for="LastName" class="text-danger field-validation"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label-primary"></label>
+                    @if (Model.IsEmailConfirmed)
+                    {
+                        <div class="input-group">
+                            <input asp-for="Email" class="form-control control-input-primary" readonly="readonly"/>
+                            <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <input asp-for="Email" class="form-control control-input-primary" readonly="readonly"/>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <button id="btnSendEmail" class="btn btn-primary btn-outline btn-block" type="button">Verify email</button>
+                            </div>
+                        </div>
+                    }
+                    <span asp-validation-for="Email" class="text-danger field-validation"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label-primary"></label>
+                    <input asp-for="PhoneNumber" class="form-control control-input-primary"/>
+                    <span asp-validation-for="PhoneNumber" class="text-danger field-validation"></span>
+                </div>
+
+                <button id="btn-save-personal" class="btn col-xs-12 col-sm-4 pull-right btn-warning btn-outline btn-lg">Save</button>
+            </form>
+        </div>
+
+        <div class="col-xs-12">
+            <h2 class="text-color-minor">Password</h2>
+            <form method="post">
+                <div class="form-group">
+                    <label asp-for="OldPassword" class="control-label-primary"></label>
+                    <input asp-for="OldPassword" class="form-control control-input-primary"/>
+                    <span asp-validation-for="OldPassword" class="text-danger field-validation"></span>
+                </div>
+    
+                <div class="form-group">
+                    <label asp-for="NewPassword" class="control-label-primary"></label>
+                    <input asp-for="NewPassword" class="form-control control-input-primary"/>
+                    <span asp-validation-for="NewPassword" class="text-danger field-validation"></span>
+                </div>
+    
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="control-label-primary"></label>
+                    <input asp-for="ConfirmPassword" class="form-control control-input-primary"/>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger field-validation"></span>
+                </div>
+    
+                <div id="validation" class="text-danger"></div>
+    
+                <div class="form-group">
+                    <button id="btn-save-password" type="button" class="btn col-xs-12 col-sm-6 pull-right btn-warning btn-outline btn-lg">Update password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

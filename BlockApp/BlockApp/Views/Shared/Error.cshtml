@@ -1,0 +1,20 @@
+﻿@model ErrorViewModel
+
+@{
+    ViewData["Title"] = "Error";
+    ErrorViewModel.ErrorsTest.TryGetValue(Model.HttpErrorCode, out string value);
+}
+
+<div class="page-content-margin-inner">
+    <div class="container">
+            <div class="row">
+                <div class="col-xs-10 center-block float-none">
+                    <h1 class="text-color-minor text-center error-code">@Model.HttpErrorCode</h1>
+                    <h2 class="text-color-minor text-center">@ViewData["Title"]</h2>
+                    <p class="text-color-minor text-center">@value</p>
+                    <br/>
+                    <p class="text-center"><a href="/" class="btn btn-warning btn-outline btn-lg">Main page</a></p>
+                </div>
+        </div> 
+    </div>
+</div>

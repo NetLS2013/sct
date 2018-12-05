@@ -1,0 +1,13 @@
+/Users/keiqsa/Projects/blockapp/BlockApp/BlockApp/bin/Release/netcoreapp2.0/Solidity/bin/MultiSig.abi
+/Users/keiqsa/Projects/blockapp/BlockApp/BlockApp/bin/Release/netcoreapp2.0/Solidity/bin/MultiSig.bin
+/Users/keiqsa/Projects/blockapp/BlockApp/BlockApp/bin/Release/netcoreapp2.0/BlockApp.deps.json
+/Users/keiqsa/Projects/blockapp/BlockApp/BlockApp/bin/Release/netcoreapp2.0/BlockApp.runtimeconfig.json
+/Users/keiqsa/Projects/blockapp/BlockApp/BlockApp/bin/Release/netcoreapp2.0/BlockApp.runtimeconfig.dev.json
+/Users/keiqsa/Projects/blockapp/BlockApp/BlockApp/bin/Release/netcoreapp2.0/BlockApp.dll
+/Users/keiqsa/Projects/blockapp/BlockApp/BlockApp/bin/Release/netcoreapp2.0/BlockApp.pdb
+/Users/keiqsa/Projects/blockapp/BlockApp/BlockApp/obj/Release/netcoreapp2.0/BlockApp.csproj.CoreCompileInputs.cache
+/Users/keiqsa/Projects/blockapp/BlockApp/BlockApp/obj/Release/netcoreapp2.0/UserSecretsAssemblyInfo.cs
+/Users/keiqsa/Projects/blockapp/BlockApp/BlockApp/obj/Release/netcoreapp2.0/BlockApp.AssemblyInfoInputs.cache
+/Users/keiqsa/Projects/blockapp/BlockApp/BlockApp/obj/Release/netcoreapp2.0/BlockApp.AssemblyInfo.cs
+/Users/keiqsa/Projects/blockapp/BlockApp/BlockApp/obj/Release/netcoreapp2.0/BlockApp.dll
+/Users/keiqsa/Projects/blockapp/BlockApp/BlockApp/obj/Release/netcoreapp2.0/BlockApp.pdb

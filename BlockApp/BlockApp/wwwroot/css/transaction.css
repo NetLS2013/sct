@@ -1,0 +1,172 @@
+﻿table > thead, .per-page {
+    font-family: "ProximaNova-Bold", sans-serif;
+    font-weight: bold;
+}
+
+.btn-number, table > tbody {
+    font-family: "ProximaNova-Regular", sans-serif;
+    letter-spacing: 0.02rem;
+    line-height: 3.6rem;
+}
+
+.dropdown-menu > li > a,
+.btn-number,
+.per-page,
+table > thead {
+    font-size: 14px !important;
+}
+
+table > tbody {
+    font-size: 14px;
+}
+
+label {
+    margin: 0;
+}
+
+.select-number {
+    display: inline-block;
+}
+
+.form-inline > .form-group > label,
+.form-inline > .form-group > span,
+.form-inline > .form-group > div,
+.form-inline > .form-group > button {
+    margin-right: 1rem;
+    margin-left: 1rem;
+    vertical-align: middle;
+    font-family: "ProximaNova-Regular", sans-serif;
+    font-weight: initial;
+}
+
+.dropdown-menu {
+    min-width: initial;
+}
+
+
+
+.detail-icon {
+    background: url(/images/Icons/ic_info_outline_black_24px.svg) center center no-repeat;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+}
+
+    .detail-icon:hover {
+        background: url(/images/Icons/ic_info_black_24px.svg) center center no-repeat;
+    }
+
+.button-left {
+    border: none;
+    background: url(/images/Icons/ic_chevron_left_blue_24px.svg) center center no-repeat;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+}
+
+    .button-left.hover {
+        background: url(/images/Icons/ic_chevron_left_blue_light_24px.svg) center center no-repeat;
+    }
+
+.button-right {
+    background: url(/images/Icons/ic_chevron_right_blue_24px.svg) center center no-repeat;
+    border: none;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+}
+
+    .button-right.hover {
+        background: url(/images/Icons/ic_chevron_right_blue_light_24px.svg) center center no-repeat;
+    }
+
+.button-sort {
+    border: none;
+    background: transparent;
+}
+
+
+    .button-sort > div {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .button-sort > span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+
+.button-sort-up {
+    background: url(/images/Icons/ic_arrow_upward_blue_24px.svg) left no-repeat;
+    border: none;
+    height: 18px;
+    width: 20px;
+    text-align: right;
+}
+
+.button-sort-down {
+    background: url(/images/Icons/ic_arrow_downward_blue_24px.svg) left no-repeat;
+    border: none;
+    height: 18px;
+    width: 20px;
+    text-align: right;
+}
+
+.trx-table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+.btn-number {
+    border-width: 0;
+    background: transparent;
+    line-height: inherit;
+    font-weight: inherit;
+}
+
+.btn-number:focus {
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.per-page {
+    border: none;
+    background: transparent;
+    padding: 6px 12px;
+    font-weight: inherit;
+}
+
+.text-elips {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    max-width: 55rem;
+}
+
+.trx-table > tbody > tr:first-child > td:first-child {
+    border-top: none;
+}
+
+
+@media screen and (min-width: 1280px) {
+    table > tbody {
+        font-size: 18px !important;
+    }
+
+    .text-elips {
+        max-width: 45rem;
+    }
+}
+
+@media screen and (min-width: 600px) and (min-width: 959px) {
+    .text-elips {
+        max-width: 55rem;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 599px) {
+    .text-elips {
+        max-width: 150px;
+    }
+}

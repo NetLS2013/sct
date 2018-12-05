@@ -1,0 +1,20 @@
+﻿@{ 
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content-margin-inner">
+    <div class="container">
+        <div class="row">
+            <noscript>
+                <div class="alert alert-danger text-center">
+                    For correct work turn on Javascript.
+                </div>
+            </noscript> 
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

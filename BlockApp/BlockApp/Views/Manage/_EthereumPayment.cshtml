@@ -1,0 +1,20 @@
+﻿@using BlockApp.Enum
+@model BlockApp.Models.ManageViewModels.TransactionViewModel
+    
+<h2 class="text-color-minor">Contract Details</h2>
+<form>
+    <div class="form-group">
+        <label class="control-label-primary">Contract address</label>
+        <div class="input-group">
+            <input name="contrAddr" asp-for="ContractAddress" type="text" class="form-control control-input-primary" readonly="readonly" value="@Model.ContractAddress"/>
+            <span class="input-group-btn"><input value="&nbsp;" type="button" class="btn btn-copy btn-left-radius @(string.IsNullOrWhiteSpace(Model.ContractAddress)? " disabled" : "")" @(string.IsNullOrWhiteSpace(Model.ContractAddress)? "disabled=\"disabled\"" : "")></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label-primary">Contract ABI</label>
+        <div class="input-group">
+            <input type="text" asp-for="ABI" class="form-control control-input-primary" readonly="readonly"/>
+            <span class="input-group-btn"><input value="&nbsp;" type="button" class="btn btn-copy btn-left-radius @(string.IsNullOrWhiteSpace(Model.ABI)? " disabled" : "")" @(string.IsNullOrWhiteSpace(Model.ABI) ? "disabled=\"disabled\"" : "")></span>
+        </div>
+    </div>
+</form>

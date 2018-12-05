@@ -1,0 +1,84 @@
+﻿
+@using BlockApp.Enum
+@model X.PagedList.IPagedList<BlockApp.Models.ManageViewModels.TransactionViewModel>
+<form id="tableForm">
+    <div class="table-responsive">
+        <table class="table trx-table text-color-minor" id="trxTable">
+            <thead class="text-color-minor-light">
+            <tr>
+                <th class="col-md-4">
+                    Description
+                </th>
+                <th  class="col-md-3 text-right">
+                    <button class="button-sort text-color-minor amount-sort"><div class="@("amount_desc" == (string)ViewData["sortOrder"]? "button-sort-up" : ("amount" == (string)ViewData["sortOrder"]? "button-sort-down" : ""))"></div> <span>Amount</span></button>
+                </th>
+                <th  class="col-md-2 text-right">
+                    Status
+                </th>
+                <th  class="col-md-2 text-right">
+                    <button class="button-sort text-color-minor date-sort"><div class="@((("date_desc" == (string)ViewData["sortOrder"]) || string.IsNullOrWhiteSpace((string)ViewData["sortOrder"]))? "button-sort-up" : ("amount_desc" != (string)ViewData["sortOrder"] && "amount" != (string)ViewData["sortOrder"])? "button-sort-down text-color-minor" : "")"></div> <span>Date</span></button>
+                </th>
+                <th class="text-center col-md-1">
+                    Info
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-elips">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td class="text-right text-nowrap">
+                        @Html.DisplayFor(modelItem => item.Amount) @(item.WalletType == WalletType.Electrum? "BTC" : "ETH")
+                    </td>
+                    <td class="text-right text-nowrap">
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td class="text-right">
+                        @item.Created.ToString("g")
+                    </td>
+                    <td class="text-center">
+                        <a href="/Manage/Transaction?id=@item.Id" class="detail-icon"></a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+    </div>
+    @if (Model.Count == 0)
+    {
+        <p class="text-color-minor text-center">No transaction to view.</p>
+    }
+    else
+    {
+        <div class="form-inline pull-right text-color-minor-light">
+            <div class="form-group">
+                <label class="">Rows per page:</label>
+                <div class="dropdown dropdown-menu-right select-number text-color-minor">
+                    <button class="btn-number dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @Model.PageSize
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="per-page">5</button></li>
+                        <li><button class="per-page">10</button></li>
+                        <li><button class="per-page">25</button></li>
+                    </ul>
+                </div>
+                <input type="hidden" name="totalItems" value="@Model.TotalItemCount"/>
+                <input type="hidden" name="sortOrder" value="@ViewData["sortOrder"]"/>
+                <input type="hidden" name="page" value="@Model.PageNumber"/>
+                <input type="hidden" name="itemPerPage" value="@Model.PageSize"/>
+            </div>
+            <div class="form-group">
+                <label>@Model.FirstItemOnPage-@Model.LastItemOnPage of @Model.TotalItemCount</label>
+                <button class="button-left @(Model.IsFirstPage ? "hover" : "")" @(Model.IsFirstPage ? "disabled" : "")></button>
+                <button class="button-right @(Model.IsLastPage ? "hover" : "")" @(Model.IsLastPage ? "disabled" : "")></button>
+            </div>
+        </div>
+    }
+
+</form>
